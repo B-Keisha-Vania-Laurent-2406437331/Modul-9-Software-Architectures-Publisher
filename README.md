@@ -51,3 +51,23 @@ of publish activity hitting the broker in a very short time. After the publisher
 are sharp and narrow. The more times the publisher is run, the more spikes appear on the chart.
 This clearly shows the direct correlation between running the publisher and the activity seen on
 the RabbitMQ monitoring dashboard.
+
+## Bonus (Make It Works)
+
+### Running RabbitMQ on CloudAMQP
+
+![CloudAMQP](assets/images/bonus_rabbitmq.png)
+
+### Sending and Processing Event
+
+![Publisher](assets/images/bonus_publisher.png)
+![Subscriber](assets/images/bonus_subscriber.png)
+
+Running the experiment on CloudAMQP instead of a local RabbitMQ instance introduces
+network latency between the publisher/subscriber and the message broker. Unlike the local
+setup where messages are delivered almost instantly through localhost, the cloud broker
+requires each message to travel over the internet before reaching the queue and being
+consumed. This results in a slightly longer delay between when the publisher sends a message
+and when the subscriber receives it. Despite the added latency, the overall behavior remains
+the same, the publisher sends 5 events and the subscriber processes all of them correctly,
+proving that the event-driven architecture works regardless of where the broker is hosted.
