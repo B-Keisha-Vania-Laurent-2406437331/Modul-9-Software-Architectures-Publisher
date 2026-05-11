@@ -1,4 +1,4 @@
-## Tutorial B - Reflection
+## Tutorial A - Reflection
 
 **a. How much data will the publisher send to the message broker in one run?**
 
@@ -20,4 +20,22 @@ decoupled and only interact through the message broker as the middleman. As long
 programs point to the same broker URL, messages will be delivered correctly from publisher to
 subscriber.
 
+### Running RabbitMQ
+
 ![RabbitMQ](assets/images/rabbitmq.png)
+
+### Sending and Processing Event
+
+![Publisher](assets/images/publisher.png)
+![RabbitMQ](assets/images/subscriber.png)
+
+
+When the publisher runs with `cargo run`, it immediately sends 5 event messages to the RabbitMQ
+message broker. Each message contains a `UserCreatedEventMessage` with a unique `user_id` and
+`user_name`. The publisher does not communicate directly with the subscriber — it simply pushes
+the messages into the broker and exits. On the other side, the subscriber is constantly listening
+to the `user_created` queue on the same RabbitMQ broker. Once the messages arrive in the
+queue, the subscriber picks them up one by one and processes each message by printing it to
+the console. This demonstrates the core concept of event-driven architecture, where the
+publisher and subscriber are fully decoupled and only interact through the message broker as
+the middleman.
