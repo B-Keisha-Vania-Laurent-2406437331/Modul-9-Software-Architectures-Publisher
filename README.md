@@ -27,8 +27,7 @@ subscriber.
 ### Sending and Processing Event
 
 ![Publisher](assets/images/publisher.png)
-![RabbitMQ](assets/images/subscriber.png)
-
+![Subscriber](assets/images/subscriber.png)
 
 When the publisher runs with `cargo run`, it immediately sends 5 event messages to the RabbitMQ
 message broker. Each message contains a `UserCreatedEventMessage` with a unique `user_id` and
@@ -39,3 +38,16 @@ queue, the subscriber picks them up one by one and processes each message by pri
 the console. This demonstrates the core concept of event-driven architecture, where the
 publisher and subscriber are fully decoupled and only interact through the message broker as
 the middleman.
+
+### Monitoring Chart Based on Publisher
+
+![RabbitMQ_Spike](assets/images/rabbitmq_spike.png)
+
+The second chart in the RabbitMQ Overview page shows the message rates over the last minute.
+Every time the publisher is run with `cargo run`, it sends 5 messages to the broker at once,
+which causes a visible spike on the "Message rates" chart. The spike represents the sudden burst
+of publish activity hitting the broker in a very short time. After the publisher finishes sending all
+5 messages and exits, the rate immediately drops back to 0.0/s, which explains why the spikes
+are sharp and narrow. The more times the publisher is run, the more spikes appear on the chart.
+This clearly shows the direct correlation between running the publisher and the activity seen on
+the RabbitMQ monitoring dashboard.
