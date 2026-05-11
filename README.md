@@ -19,3 +19,5 @@ publisher and subscriber do not communicate directly with each other. Instead, t
 decoupled and only interact through the message broker as the middleman. As long as both
 programs point to the same broker URL, messages will be delivered correctly from publisher to
 subscriber.
+
+![RabbitMQ](assets/images/rabbitmq.png)
