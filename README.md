@@ -63,6 +63,10 @@ the RabbitMQ monitoring dashboard.
 ![Publisher](assets/images/bonus_publisher.png)
 ![Subscriber](assets/images/bonus_subscriber.png)
 
+### Monitoring Chart Based on Publisher
+
+![Spike](assets/images/bonus_spike.png)
+
 Running the experiment on CloudAMQP instead of a local RabbitMQ instance introduces
 network latency between the publisher/subscriber and the message broker. Unlike the local
 setup where messages are delivered almost instantly through localhost, the cloud broker
